@@ -1,33 +1,46 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter&family=Nunito:wght@500&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
-}
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
+
+@layer base {
+  *{
+    font-family: 'Nunito', sans-serif;
   }
 }
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
-}
+@layer components {
+  .shadow__gray {
+    @apply shadow-[0px_1px_2px_0px_rgba(184,200,224,0.22)];
+  }
+  .shadow__primary {
+    @apply shadow-[0px_6px_12px_0px_rgba(63,140,255,0.26)] hover:shadow-[0px_6px_12px_0px_rgba(63,140,255,0.42)] active:shadow-[0px_6px_12px_0px_rgba(63,140,255,0.42)];
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
   }
 }
+
+.hover__border {
+  width: fit-content;
+  position: relative;
+}
+
+.hover__border::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 2px; /* Épaisseur de la bordure */
+  background-color: transparent; /* Couleur de la bordure par défaut */
+  transform: scaleX(0); /* Réduire l'épaisseur de la bordure à zéro */
+  transform-origin: 0 100%; /* Origine de la transformation pour l'effet de gauche à droite */
+  transition: transform 0.3s ease-out, background-color 0.3s ease-out;
+}
+
+.hover__border:hover::before {
+  transform: scaleX(1); /* Étendre l'épaisseur de la bordure à 100% */
+  background-color: #3F8CFF; /* Couleur de la bordure pendant le survol */
+}
+
