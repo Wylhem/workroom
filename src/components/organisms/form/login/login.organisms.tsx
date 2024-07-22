@@ -9,7 +9,7 @@ interface LabelInputProps {
   placeholder: string;
   state: "default" | "invalid" | "disabled";
   required: boolean;
-  label: string;
+
   message?: string;
 }
 interface LoginFormProps {
